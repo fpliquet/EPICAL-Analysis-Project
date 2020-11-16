@@ -8,9 +8,9 @@
 #include "TH2.h"
 #include "TUnixSystem.h"
 
-#include "/Users/fpliquett/work/FoCal/analysiscode/mTowerProject/include/mTowerAnalysisObject.h"
-#include "/Users/fpliquett/work/FoCal/analysiscode/mTowerProject/include/mTowerGeometry.h"
-#include "/Users/fpliquett/work/FoCal/analysiscode/mTowerProject/include/mTowerUtility.h"
+#include "../../include/EPICALAnalysisObject.h"
+#include "../../include/EPICALGeometry.h"
+#include "../../include/EPICALUtility.h"
 
 using namespace std;
 
@@ -23,7 +23,7 @@ int main (int argc, char** argv)
 
   bool force = false;
 
-  mTowerAnalysisObject ao(run);
+  EPICALAnalysisObject ao(run);
   ao.ProduceHitmaps(force);
   ao.ProduceNoisyPixelMapClassification(force);
   ao.ProduceNoisyPixelMapPedestal(force);

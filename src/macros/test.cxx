@@ -7,9 +7,9 @@
 #include "TH2.h"
 #include "THStack.h"
 
-#include "/Users/fpliquett/work/FoCal/analysiscode/mTowerProject/include/mTowerAnalysisObject.h"
-#include "/Users/fpliquett/work/FoCal/analysiscode/mTowerProject/include/mTowerGeometry.h"
-#include "/Users/fpliquett/work/FoCal/analysiscode/mTowerProject/include/mTowerUtility.h"
+#include "../../include/EPICALAnalysisObject.h"
+#include "../../include/EPICALGeometry.h"
+#include "../../include/EPICALUtility.h"
 #include "/Users/fpliquett/commoncode/myStyle.h"
 
 using namespace std;
@@ -24,7 +24,7 @@ int main (int argc, char** argv)
 
   bool force = false;
 
-  mTowerAnalysisObject ao(run);
+  EPICALAnalysisObject ao(run);
   // ao.ProduceHitmaps(force);
   // ao.LoadHitmaps();
   // ao.ProduceNhitsPerPixel(true);
@@ -37,7 +37,7 @@ int main (int argc, char** argv)
   // ao.ProduceManualPixelMap(force);
   ao.ProduceCombinedPixelMap(force);
   ao.LoadPixelMasks(kAll);
-  mTowerGeometry geo = ao.GetGeometry();
+  EPICALGeometry geo = ao.GetGeometry();
 
   int status = 0, iBinCol, iBinRow, cont = 0; // 6 digits: noisyclass noisyped noisybeam deadclass deadbeam manual
   const int nMethods = 6;
