@@ -1,12 +1,10 @@
 cmake_minimum_required(VERSION 3.16)
 project(EPICALProject CXX)
 add_executable(test src/macros/test.cxx)
-add_executable(Init src/macros/Init.cxx)
 add_executable(draw_pixelmaskoverview src/macros/draw_pixelmaskoverview.cxx)
 add_executable(draw_hitmapoverview src/macros/draw_hitmapoverview.cxx)
 
 
-add_library(testLib SHARED include/testClass.h src/classes/testClass.cxx)
 add_library(mystylelib SHARED /Users/fpliquett/commoncode/myStyle.h /Users/fpliquett/commoncode/myStyle.cxx)
 add_library(EPICALAnalysisObjectLib SHARED include/EPICALAnalysisObject.h src/classes/EPICALAnalysisObject.cxx)
 add_library(EPICALGeometryLib SHARED include/EPICALGeometry.h src/classes/EPICALGeometry.cxx)
@@ -25,20 +23,15 @@ else()
 endif(ROOT_FOUND)
 
 target_link_libraries(EPICALAnalysisObjectLib EPICALGeometryLib)
-target_link_libraries(test testLib)
 target_link_libraries(test mystylelib)
 target_link_libraries(test EPICALAnalysisObjectLib)
 target_link_libraries(test EPICALGeometryLib)
 
-target_link_libraries(Init EPICALAnalysisObjectLib)
 target_link_libraries(draw_pixelmaskoverview EPICALAnalysisObjectLib)
 target_link_libraries(draw_hitmapoverview EPICALAnalysisObjectLib)
 
 install(TARGETS test
   RUNTIME DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/install
-)
-install(TARGETS testLib
-  LIBRARY DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/lib
 )
 install(TARGETS mystylelib
   LIBRARY DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/lib
