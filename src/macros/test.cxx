@@ -10,7 +10,7 @@
 #include "../../include/EPICALAnalysisObject.h"
 #include "../../include/EPICALGeometry.h"
 #include "../../include/EPICALUtility.h"
-#include "/Users/fpliquett/commoncode/myStyle.h"
+#include "../../include/myStyle.h"
 
 using namespace std;
 

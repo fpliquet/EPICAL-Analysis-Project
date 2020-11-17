@@ -5,7 +5,7 @@ add_executable(draw_pixelmaskoverview src/macros/draw_pixelmaskoverview.cxx)
 add_executable(draw_hitmapoverview src/macros/draw_hitmapoverview.cxx)
 
 
-add_library(mystylelib SHARED /Users/fpliquett/commoncode/myStyle.h /Users/fpliquett/commoncode/myStyle.cxx)
+add_library(myStyleLib SHARED include/myStyle.h src/myStyle.cxx)
 add_library(EPICALAnalysisObjectLib SHARED include/EPICALAnalysisObject.h src/classes/EPICALAnalysisObject.cxx)
 add_library(EPICALGeometryLib SHARED include/EPICALGeometry.h src/classes/EPICALGeometry.cxx)
 
@@ -15,7 +15,7 @@ if(ROOT_FOUND)
   include(${ROOT_USE_FILE})
   message(STATUS "root  version: ${ROOT_VERSION}")
   target_link_libraries(testLib ${ROOT_LIBRARIES})
-  target_link_libraries(mystylelib ${ROOT_LIBRARIES})
+  target_link_libraries(myStyleLib ${ROOT_LIBRARIES})
   target_link_libraries(EPICALAnalysisObjectLib ${ROOT_LIBRARIES})
   target_link_libraries(EPICALGeometryLib ${ROOT_LIBRARIES})
 else()
@@ -23,7 +23,7 @@ else()
 endif(ROOT_FOUND)
 
 target_link_libraries(EPICALAnalysisObjectLib EPICALGeometryLib)
-target_link_libraries(test mystylelib)
+target_link_libraries(test myStyleLib)
 target_link_libraries(test EPICALAnalysisObjectLib)
 target_link_libraries(test EPICALGeometryLib)
 
@@ -33,7 +33,7 @@ target_link_libraries(draw_hitmapoverview EPICALAnalysisObjectLib)
 install(TARGETS test
   RUNTIME DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/install
 )
-install(TARGETS mystylelib
+install(TARGETS myStyleLib
   LIBRARY DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/lib
 )
 install(TARGETS EPICALAnalysisObjectLib
