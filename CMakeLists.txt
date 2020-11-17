@@ -5,7 +5,7 @@ add_executable(draw_pixelmaskoverview src/macros/draw_pixelmaskoverview.cxx)
 add_executable(draw_hitmapoverview src/macros/draw_hitmapoverview.cxx)
 
 
-add_library(myStyleLib SHARED include/myStyle.h src/myStyle.cxx)
+add_library(myStyleLib SHARED include/myStyle.h src/classes/myStyle.cxx)
 add_library(EPICALAnalysisObjectLib SHARED include/EPICALAnalysisObject.h src/classes/EPICALAnalysisObject.cxx)
 add_library(EPICALGeometryLib SHARED include/EPICALGeometry.h src/classes/EPICALGeometry.cxx)
 
@@ -14,7 +14,6 @@ find_package(ROOT)
 if(ROOT_FOUND)
   include(${ROOT_USE_FILE})
   message(STATUS "root  version: ${ROOT_VERSION}")
-  target_link_libraries(testLib ${ROOT_LIBRARIES})
   target_link_libraries(myStyleLib ${ROOT_LIBRARIES})
   target_link_libraries(EPICALAnalysisObjectLib ${ROOT_LIBRARIES})
   target_link_libraries(EPICALGeometryLib ${ROOT_LIBRARIES})
