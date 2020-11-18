@@ -747,9 +747,6 @@ void EPICALAnalysisObject::ProduceCombinedPixelMap (bool force)
   }
 
 
-  TFile* f_out = new TFile(s_out.data(),"RECREATE"); // output file for pixel mask
-
-
   // produce all single masks
   ProduceNoisyPixelMapClassification(force);
   ProduceNoisyPixelMapPedestal(force);
@@ -760,6 +757,8 @@ void EPICALAnalysisObject::ProduceCombinedPixelMap (bool force)
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   LoadPixelMasks(kAll);
+  
+  TFile* f_out = new TFile(s_out.data(),"RECREATE"); // output file for pixel mask
 
   f_out->cd();
 
