@@ -34,7 +34,7 @@
 
 EPICALAnalysisObject::EPICALAnalysisObject (const int &run) :
 fRunNr(run),
-fNevents(getnevents(run)),
+fNevents(getnevents(run)), // number of events from run condition table
 fDataTakingPeriod(getdataperiod(run)),
 
 fRawDataFilePath(rawdatafilepath()),
@@ -270,10 +270,6 @@ void EPICALAnalysisObject::ProduceNoisyPixelMapPedestal (bool force)
 
   // define output histograms
   TH2C* h2_hotpixelmap = InitHist2DChip<TH2C>("h2_pixelmap"); // 2D hot pixel map per chip to be reused chip-by-chip
-  // TH2C* h2_hotpixelmap = new TH2C("h2_pixelmap", "h2_pixelmap", // 2D hot pixel map per chip to be reused chip-by-chip
-  //   fNcolumns, static_cast<double>(fColumnMin)-0.5, static_cast<double>(fColumnMax)+0.5,
-  //   fNrows, static_cast<double>(fRowMin)-0.5, static_cast<double>(fRowMax)+0.5
-  // );
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -553,7 +549,6 @@ void EPICALAnalysisObject::ProduceDeadPixelMapBeam (bool force)
     // create objects for dead pixel map for each chip
     h2_colrow_chip    = fHitmaps.at(iChipID);
     h2_deadpixelmap   = InitHist2DChip<TH2C>(Form("h2_pixelmap_chip%i", iChipID));
-    // h2_deadpixelmap   = new TH2C(Form("h2_pixelmap_chip%i", iChipID), Form("h2_pixelmap_chip%i", iChipID), fNcolumns, static_cast<double>(fColumnMin)-0.5, static_cast<double>(fColumnMax)+0.5, fNrows, static_cast<double>(fRowMin)-0.5, static_cast<double>(fRowMax)+0.5);
     h1_projection_col = (TH1D*) h2_colrow_chip->ProjectionX(Form("h1_projection_col_chip%i", iChipID));
     h1_dev_chip->Reset();
     h1_dev_chip->SetName(Form("h1_dev_chip%i", iChipID));
@@ -674,7 +669,6 @@ void EPICALAnalysisObject::ProduceManualPixelMap (bool force)
   TFile* f_out = new TFile(s_out.data(),"RECREATE"); // output file for pixel mask
 
   TH2C* h2_deadpixelmap = InitHist2DChip<TH2C>("h2_pixelmap");
-  // TH2C* h2_deadpixelmap = new TH2C("h2_pixelmap", "h2_pixelmap", fNcolumns, static_cast<double>(fColumnMin)-0.5, static_cast<double>(fColumnMax)+0.5, fNrows, static_cast<double>(fRowMin)-0.5, static_cast<double>(fRowMax)+0.5);
 
   int iBinCol = -1, iBinRow = -1;
 
@@ -887,9 +881,6 @@ void EPICALAnalysisObject::LoadPixelMasks (ePixelMask ePM)
   for (auto iChipID = fChipMin; iChipID <= fChipMax; ++iChipID)
   {
     fPixelMasks.push_back(InitHist2DChip<TH2C>(Form("h2_pixelmap_chip%i", iChipID)));
-    // fPixelMasks.push_back(new TH2C(Form("h2_pixelmap_chip%i", iChipID), Form("h2_pixelmap_chip%i", iChipID),
-    //   fNcolumns, static_cast<double>(fColumnMin)-0.5, static_cast<double>(fColumnMax)+0.5,
-    //   fNrows, static_cast<double>(fRowMin)-0.5, static_cast<double>(fRowMax)+0.5));
   }
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1037,10 +1028,6 @@ vector<TH2C*> EPICALAnalysisObject::GetBadPixelMapFromTextFile (string str)
   for (auto iChip = fChipMin; iChip <= fChipMax; ++iChip)
   {
     vh2_hotpixelmaps.push_back(InitHist2DChip<TH2C>(Form("h2_pixelmap_chip%i", iChip)));
-    // vh2_hotpixelmaps.push_back(new TH2C(Form("h2_pixelmap_chip%i", iChip), Form("h2_pixelmap_chip%i", iChip), // 2D hot pixel map per chip to be reused chip-by-chip
-    //   fNcolumns, static_cast<double>(fColumnMin)-0.5, static_cast<double>(fColumnMax)+0.5,
-    //   fNrows, static_cast<double>(fRowMin)-0.5, static_cast<double>(fRowMax)+0.5
-    // ));
   }
 
   double col, row, chip;
