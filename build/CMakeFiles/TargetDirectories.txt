@@ -1,0 +1,13 @@
+/Users/fpliquett/work/FoCal/analysiscode/EPICAL-Analysis-Project/build/CMakeFiles/install/strip.dir
+/Users/fpliquett/work/FoCal/analysiscode/EPICAL-Analysis-Project/build/CMakeFiles/install.dir
+/Users/fpliquett/work/FoCal/analysiscode/EPICAL-Analysis-Project/build/CMakeFiles/rebuild_cache.dir
+/Users/fpliquett/work/FoCal/analysiscode/EPICAL-Analysis-Project/build/CMakeFiles/edit_cache.dir
+/Users/fpliquett/work/FoCal/analysiscode/EPICAL-Analysis-Project/build/CMakeFiles/EPICALAnalysisObjectLib.dir
+/Users/fpliquett/work/FoCal/analysiscode/EPICAL-Analysis-Project/build/CMakeFiles/myStyleLib.dir
+/Users/fpliquett/work/FoCal/analysiscode/EPICAL-Analysis-Project/build/CMakeFiles/test.dir
+/Users/fpliquett/work/FoCal/analysiscode/EPICAL-Analysis-Project/build/CMakeFiles/draw_pixelmaskoverview.dir
+/Users/fpliquett/work/FoCal/analysiscode/EPICAL-Analysis-Project/build/CMakeFiles/list_install_components.dir
+/Users/fpliquett/work/FoCal/analysiscode/EPICAL-Analysis-Project/build/CMakeFiles/install/local.dir
+/Users/fpliquett/work/FoCal/analysiscode/EPICAL-Analysis-Project/build/CMakeFiles/produce_all.dir
+/Users/fpliquett/work/FoCal/analysiscode/EPICAL-Analysis-Project/build/CMakeFiles/draw_hitmapoverview.dir
+/Users/fpliquett/work/FoCal/analysiscode/EPICAL-Analysis-Project/build/CMakeFiles/EPICALGeometryLib.dir
