@@ -25,14 +25,14 @@ int main (int argc, char** argv)
   {
     printf("\n\n ~~~~~ Starting run %i ~~~~~ \n", RunNr);
     EPICALAnalysisObject ao(RunNr);
-    ao.ProduceHitmaps(force);
-    ao.ProduceNoisyPixelMapClassification(force);
-    ao.ProduceNoisyPixelMapPedestal(force);
-    ao.ProduceNoisyPixelMapBeam(force);
-    ao.ProduceDeadPixelMapClassification(force);
-    ao.ProduceDeadPixelMapBeam(force);
-    ao.ProduceManualPixelMap(force);
-    // ao.ProduceCombinedPixelMap(force);
+    // ao.ProduceHitmaps(force);
+    // ao.ProduceNoisyPixelMapClassification(force);
+    // ao.ProduceNoisyPixelMapPedestal(force);
+    // ao.ProduceNoisyPixelMapBeam(force);
+    // ao.ProduceDeadPixelMapClassification(force);
+    // ao.ProduceDeadPixelMapBeam(force);
+    // ao.ProduceManualPixelMap(force);
+    ao.ProduceCombinedPixelMap(force);
   }
 
   return 0;
