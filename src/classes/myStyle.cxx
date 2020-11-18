@@ -1,4 +1,4 @@
-#include "myStyle.h"
+#include "../../include/myStyle.h"
 #include "TStyle.h"
 
 // void myStyle::ApplyStyle () {

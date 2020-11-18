@@ -59,7 +59,7 @@ class EPICALAnalysisObject
     string fDeadPixelMaskClassificationDirPath; // path to local directory where dead pixel mask from classification is stored
     string fDeadPixelMaskBeamDirPath; // path to local directory where dead pixel mask from beam runs is stored
     string fManualPixelMaskDirPath; // path to local directory where manual pixel mask is stored
-    string fCombinedPixelMaskDirPath; // path to local directory where manual pixel mask is stored
+    string fCombinedPixelMaskDirPath; // path to local directory where combined pixel mask is stored
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -173,8 +173,8 @@ class EPICALAnalysisObject
     void SetDataTakingPeriod (const eDTP &dtp) { fDataTakingPeriod = dtp; };
 
 
-    string GetDataDirPath ()                  { return fRawDataFilePath; };
-    void   SetDataDirPath (const string &str) { fRawDataFilePath = str; };
+    string GetDataFilePath ()                  { return fRawDataFilePath; };
+    void   SetDataFilePath (const string &str) { fRawDataFilePath = str; };
 
     string GetTreeName ()                  { return fTreeName; };
     void   SetTreeName (const string &str) { fTreeName = str; };

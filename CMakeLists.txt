@@ -1,11 +1,12 @@
 cmake_minimum_required(VERSION 3.16)
 project(EPICALProject CXX)
 add_executable(test src/macros/test.cxx)
+add_executable(produce_all src/macros/produce_all.cxx)
 add_executable(draw_pixelmaskoverview src/macros/draw_pixelmaskoverview.cxx)
 add_executable(draw_hitmapoverview src/macros/draw_hitmapoverview.cxx)
 
 
-add_library(myStyleLib SHARED include/myStyle.h src/myStyle.cxx)
+add_library(myStyleLib SHARED include/myStyle.h src/classes/myStyle.cxx)
 add_library(EPICALAnalysisObjectLib SHARED include/EPICALAnalysisObject.h src/classes/EPICALAnalysisObject.cxx)
 add_library(EPICALGeometryLib SHARED include/EPICALGeometry.h src/classes/EPICALGeometry.cxx)
 
@@ -14,7 +15,6 @@ find_package(ROOT)
 if(ROOT_FOUND)
   include(${ROOT_USE_FILE})
   message(STATUS "root  version: ${ROOT_VERSION}")
-  target_link_libraries(testLib ${ROOT_LIBRARIES})
   target_link_libraries(myStyleLib ${ROOT_LIBRARIES})
   target_link_libraries(EPICALAnalysisObjectLib ${ROOT_LIBRARIES})
   target_link_libraries(EPICALGeometryLib ${ROOT_LIBRARIES})
@@ -27,19 +27,14 @@ target_link_libraries(test myStyleLib)
 target_link_libraries(test EPICALAnalysisObjectLib)
 target_link_libraries(test EPICALGeometryLib)
 
+target_link_libraries(produce_all EPICALAnalysisObjectLib)
 target_link_libraries(draw_pixelmaskoverview EPICALAnalysisObjectLib)
 target_link_libraries(draw_hitmapoverview EPICALAnalysisObjectLib)
 
-install(TARGETS test
+install(TARGETS test produce_all draw_pixelmaskoverview draw_hitmapoverview
   RUNTIME DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/install
 )
-install(TARGETS myStyleLib
-  LIBRARY DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/lib
-)
-install(TARGETS EPICALAnalysisObjectLib
-  LIBRARY DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/lib
-)
-install(TARGETS EPICALGeometryLib
+install(TARGETS myStyleLib EPICALAnalysisObjectLib EPICALGeometryLib
   LIBRARY DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/lib
 )
 
