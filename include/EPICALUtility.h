@@ -69,7 +69,7 @@ int getnevents (unsigned int run)
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 int getpedestalrunnr (int run) // return pedestal run number corresponding to input run number
 {
-  vector<int> ivPedRuns = {1232, 1246, 1303, 1311, 1332, 1340, 1356, 1374, 1395, 1421, 1438, 1463}; // pedestal run list of february data taking
+  vector<int> ivPedRuns = {1232, 1246, 1303, 1311, 1332, 1340, 1356, 1374, 1395, 1421, 1438, 1463, 1750, 1751}; // pedestal run list of february data taking
   std::sort(ivPedRuns.begin(), ivPedRuns.end()); // make sure run numbers are in ascending order
   int iPedRunNr = 0;
 
@@ -79,7 +79,7 @@ int getpedestalrunnr (int run) // return pedestal run number corresponding to in
     std::cout << " ### Run number too low. " << std::endl;
     return -1;
   }
-  else if (run > 1471) // last recorded run in february data taking was 1471
+  else if (run > 1751) // last recorded run in february data taking was 1471 two pedestal (1750, 1751) added later
   {
     std::cout << " ### Run number higher than last run number of data taking. " << std::endl;
     return -1;
