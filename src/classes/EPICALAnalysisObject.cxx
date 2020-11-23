@@ -528,7 +528,7 @@ void EPICALAnalysisObject::ProduceDeadPixelMapBeam (bool force)
   TH1D* h1_projection_col; // projection of hitmap on columns
   // TH1D* h1_projection_col_cumulative; // projection of hitmap on columns, cumulative
   TH2C* h2_deadpixelmap; // 2D histogram to store dead pixel map
-  TH1D* h1_dev_chip = new TH1D("h1_dev_chip", "h1_dev_chip", 401, -20.05, 20.05);
+  TH1D* h1_dev_chip = new TH1D("h1_dev_chip", "h1_dev_chip", 201, -20.05, 20.05);
   vector<TH1D*> h1_dev;
   int iNdiv = 10;
   for (int i = 0; i < iNdiv+1; ++i)
@@ -757,7 +757,7 @@ void EPICALAnalysisObject::ProduceCombinedPixelMap (bool force)
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   LoadPixelMasks(kAll);
-  
+
   TFile* f_out = new TFile(s_out.data(),"RECREATE"); // output file for pixel mask
 
   f_out->cd();
